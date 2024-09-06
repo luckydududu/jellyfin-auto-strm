@@ -28,7 +28,7 @@ const loggerOptions: LoggerOptions = {
         format.splat(),
         logFormat
     ),
-    transports: config.transports.map((transportConfig: any) => {
+    transports: config.transports?.map((transportConfig: any) => {
         if (transportConfig.type === 'Console') {
             return new transports.Console({
                 format: format.combine(

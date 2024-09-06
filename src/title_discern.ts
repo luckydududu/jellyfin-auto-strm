@@ -54,7 +54,7 @@ export function discernTitleWithRule(fileInfo: FileInfo, rule: NamingRule, media
     logger.warn(`is not supported media types: ${mediaType}`);
   }
   // logger.debug(`解析结果: ${JSON.stringify(result)}`);
-  return undefined;
+  return result;
 }
 
 export function discernTitle(fileInfo: FileInfo, namingRules: NamingRule[], mediaType: MediaType): TitleDiscernResult[] {
