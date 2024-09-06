@@ -1,0 +1,15 @@
+# logger.config.yml
+
+level: "debug"  # 设置日志级别，例如 'info', 'debug', 'error'
+logDir: "logs"  # 日志文件存放目录
+
+transports:
+  - type: "Console"
+    format:
+      - "colorize"
+      - "printf"
+  - type: "DailyRotateFile"
+    filename: "app-%DATE%.log"
+    datePattern: "YYYY-MM-DD"
+    maxFiles: "14d"
+    zippedArchive: true

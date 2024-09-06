@@ -1,0 +1,35 @@
+language: "zh-CN"  # 全局语言设置
+
+sources:
+  xiaoya:
+    type: webdav
+    server_address: "http://192.168.79.244:5678/dav/"
+    path: "/电影/人人影视电影合集/"
+    visit_url_prefix: "http://guest:guest_Api789@192.168.79.244:5678/dav/电影/人人影视电影合集/"
+    username: "guest"
+    password: "guest_Api789"
+
+nfo_providers:
+  tmdb:
+    type: tmdb
+    api_key: "88888"  # 替换为你自己的 TMDb API 密钥
+
+outputs:
+  jellyfin_movies:
+    type: "jellyfin"
+    library_name: "Movies"
+    output_dir: "movies"  # 相对路径，实际输出路径是 /auto-strm/strm/movies/
+
+tasks:
+  xiaoya_movies:
+    source: xiaoya
+    nfo_provider: tmdb
+    media_type: movie  # 改为单个值
+    file_patterns: 
+      - .*\.avi$
+    naming_rules: 
+      - title_year_nonengtitle_format
+      - title_year_format
+    output: jellyfin_movies
+
+
